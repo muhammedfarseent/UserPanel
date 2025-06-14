@@ -12,7 +12,7 @@ func main() {
 	r := gin.Default()
 
 	r.POST("Signup", controller.Signup)
-	r.POST("Sign", controller.Signin)
+	r.POST("Signin", controller.Signin)
 	r.POST("Signout", controller.Signout)
 	r.Run(":8080")
 
