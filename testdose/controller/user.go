@@ -40,7 +40,7 @@ func Signup(c *gin.Context) {
 func Signin(c *gin.Context) {
 	var input struct {
 		Email    string `json:"email"`
-		password string `json:"password`
+		Password string `json:"password"`
 	}
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid"})
@@ -52,8 +52,8 @@ func Signin(c *gin.Context) {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "invalid"})
 		return
 	}
-	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(input.password)); err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "invalid password"})
+	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(input.Password)); err != nil {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "invalid passwordd"})
 		return
 	}
 	token, err := utils.GenerateToken(user.ID)
